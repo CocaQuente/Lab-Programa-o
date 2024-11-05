@@ -56,22 +56,35 @@ def q4():
 #sucessivas, crie um programa que calcule o produto de dois números inteiros
 #lidos. Suponha que os números lidos sejam positivos.
 def q5():
-      erro = True
-      while erro == True:
-         try:
-            fator1 = int(input('Número 1:'))
-         except ValueError:
+   erro = True
+   while erro == True:
+      fator1 = 0
+      erro = False
+      try:
+         fator1 = int(input('Número 1: '))
+      except ValueError:
             print('O valor informado não é um número inteiro!')
             erro = True
-         except:
+      except:
             print('Ocorreu um erro desconhecido! tente novamente mais tarde! Obrigado!')
             erro = True
-         else:
+      else:
             erro = False # executa se nao ocorrer erro
-         finally:
+      finally:
             print(f'Número 1 = {fator1}') # mensagem sempre é exibida, com erro ou n
+   erro = True
+   while erro == True:
+      try:
+            fator2 = int(input('Numero2: '))
+            erro = False 
+      except ValueError:
+            print('O valor informado não é um numero inteiro') 
             erro = True
-            while erro == True: 
+      produto = 0 
+      for _ in range (fator1):
+               produto += fator2
+      print(f'{fator1} * {fator2} = {produto}')         
+
 
       
 
@@ -317,5 +330,17 @@ def q5():
 #• amédia das idades das pessoas viúvas;
 #• a porcentagem de pessoas desquitadas ou separadas dentre todas as pessoas
 #analisadas.
-#Obs.: Para encerrar a entrada de dados, digite um número menor que zero para a
-#idade
+#Obs.: Para encerrar a entrada de dados, digite um número menor que zero para a idade
+questao = int(input('Questão a ser executado'))
+eval(f'q{questao}')
+match questao:
+      case 1:
+        q1()
+      case 2:
+        q2()
+      case 3: 
+        q3()
+      case 4:
+        q4()
+      case 5:
+        q5()    
