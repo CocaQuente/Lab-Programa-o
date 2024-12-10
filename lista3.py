@@ -1,92 +1,64 @@
-def exemploPara():
-    for x in range(10):
-        print(x)
-        for x in range(1,10,2):
-            print(x)
-            for x in range(10,1,-1):
-             print(x)
-
-def exemploEnquanto():
-    opcao = - 1
-    while opcao != 0:
-     opcao = int(input('Escolha uma opção (0 para sair)>:'))
-    print(opcao)
-
+from canivete import *
 
 #1.Faça um programa que imprima todos os números de 1 até 100.
 def q1():
-   for num in range(1,101):
-      print(num , end =" ")
+    for i in range(1,101): print(i)
 
-     
 #2. Faça um programa que imprima todos os números pares de 100 até 1.
 def q2():
-   for num in range ( 101 , 1, - 1 ): print(num , end = " ")
-      
+    for i in range(100,0,-1): print(i)
+
 #3. Faça um programa que imprima os múltiplos de 5, no intervalo de 1 até 500.
+
 def q3():
-   for num in range ( 0, 501, 5 ): print(num , end = " ")
+    for i in range(0,501,5): print(i)
 
-
-
-#4. Faça um programa que permita entrar com o nome, a idade e o sexo de 20
+#4. Faça umprograma que permita entrar com o nome, a idade e o sexo de 20
 #pessoas.O programa deve imprimir o nome da pessoa se ela for do sexo masculino
 #e tiver mais de 21 anos.
 def q4():
-   nomes = []
-   idades = []
-   sexos = []
-   for _ in range(20):
-      nomes = input("O nome da pessoa: ")
-      idades = int(input("Entre com a idade da pessoa: "))
-      sexos = input("Entre com o sexo da pessoa (M/F): ").upper()
-      nomes.append(nomes)
-      idades.append(idades)
-      sexos.append(sexos)
-      print("\nPessoas do sexo masculino com mais de 21 anos:\n")
-      for i in range(20):
-         if sexos[_] == 'M' and idades[i] > 21:
-            print(nomes[i])
-
-
-   
-   
+    for i in range(21):
+        print(f'\n{i+1}--:')
+        name = input('Nome: ').title()
+        age = int(input('Idade: '))
+        sexo = input('Sexo: ').upper().strip()[0]
+        
+        if sexo == 'M' and age >= 21:
+            print(f'\n{name}')
 
 #5. Sabendo-se que a unidade lógica e aritmética calcula o produto através de somas
 #sucessivas, crie um programa que calcule o produto de dois números inteiros
 #lidos. Suponha que os números lidos sejam positivos.
 def q5():
-   erro = True
-   while erro == True:
-      fator1 = 0
-      erro = False
-      try:
-         fator1 = int(input('Número 1: '))
-      except ValueError:
-            print('O valor informado não é um número inteiro!')
-            erro = True
-      except:
-            print('Ocorreu um erro desconhecido! tente novamente mais tarde! Obrigado!')
-            erro = True
-      else:
-            erro = False # executa se nao ocorrer erro
-      finally:
-            print(f'Número 1 = {fator1}') # mensagem sempre é exibida, com erro ou n
-   erro = True
-   while erro == True:
-      try:
-            fator2 = int(input('Numero2: '))
-            erro = False 
-      except ValueError:
-            print('O valor informado não é um numero inteiro') 
-            erro = True
-      produto = 0 
-      for _ in range (fator1):
-               produto += fator2
-      print(f'{fator1} * {fator2} = {produto}')         
+    erro = True
+    while erro == True:
+        number1 = 0
+        number2 = 0
+        
+        try:
+            number1 = int(input('Digite o Primeiro Numero: '))
+        except ValueError:
+            print('!- O Valor informado não é um numero inteiro')
+            print('!- Digite Novamente')
+        except:
+            print('!- Erro Desconhecido, Tente Novamente')
+        else:
+            erro = False
+        
+        erro = True
+        try:
+            number2 = int(input('Digite o Segundo Número:  '))
+        except ValueError:
+            print('!- O Valor informado não é um numero inteiro')
+            print('!- Digite Novamente')
+        except:
+            print('!- Erro Desconhecido, Tente Novamente')
+        else:
+            erro = False
 
+    for _ in range(number2): number1 = number1*number2
 
-      
+    print(number1)
 
 #6. Crie um programa que imprima os 20 primeiros termos da série de Fibonacci.
 #Observação: os dois primeiros termos desta série são 1 e 1 e os demais são gerados
@@ -94,11 +66,55 @@ def q5():
 #• 1 + 1 = 2, terceiro termo;
 #• 1 + 2 = 3, quarto termo, etc.
 # 1 1 2 3 5 8 13 21
+def q6():
+    termos = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765]
+
+    for i in range(2,20):
+        print(f'\n{termos[0]}',end=' ')
+        for j in range(1,i):
+            print(f'+ {termos[j]}',end=' ')
+            if j == i-1:
+                print(f'= {termos[j-1] + termos[j]}')
 
 #7. Crie um programa que permita entrar com o nome, a nota da
 #prova 1 e da prova 2 de 15 alunos. Ao final, imprimir uma listagem, contendo:
 #nome, nota da prova 1, nota da prova 2, e média das notas de cada aluno. Ao final,
 #imprimir a média geral da turma.
+def q7():
+    nomes = []
+    notas1 = []
+    notas2 = []
+    mediaGeral = 0
+    media = []
+    for i in range(15):
+        print(f'\nALUNO - {i+1}')
+        nomes.append(input('Nome Do Aluno: ').strip().title())
+    
+        print('PROVA 1:')
+        notas1.append(float_input('1- Digite a Nota: '))
+
+        print('PROVA 2:')
+        notas2.append(float_input('2- Digite a Nota: '))
+
+        media.append(round((notas1[i] + notas2[i])/2, 2))
+
+    for i in range(15):
+        print('\n--------------->GABARITO<---------------')
+        print(f'ALUNO(A): {nomes[i]}')
+
+        print(f'\nPROVA 1 --------------------------------')
+        print(f'NOTA: {notas1[i]}')
+
+        print(f'\nPROVA 2 --------------------------------')
+        print(f'NOTA: {notas2[i]}')
+
+        print(f'\nMédia do Aluno: {media[i]}')
+
+    for i in range(15):
+        mediaGeral = mediaGeral + media[i]
+
+    print(f'MEDIA DA TURMA: {round(mediaGeral/3, 2)}')
+
 
 #8. Faça umprograma que permita entrar com o nome e o salário bruto de 10 pessoas.
 #Após ler os dados, imprimir o nome e o valor da alíquota do imposto de renda
@@ -107,6 +123,25 @@ def q5():
 #Salário menor que R$1300,00 Isento
 #Salário maior ou igual a R$1300,00 e menor que R$2300,00 10% do salário bruto
 #Salário maior ou igual a R$2300,00 15% do salário bruto
+def q8():
+    nomes = []
+    salario = []
+
+    for i in range(10):
+        nomes.append(input('Digite o Nome: '))
+        salario.append(round(float_input('Informe o Salario: '), 2))
+
+        print('\n|------------->IMPOSTO DE RENDA<--------------|')
+        print(f'NOME: {nomes[i]}')
+        
+        if salario[i] < 1300:
+            print('Imposto de Renda: INSENTO')
+        elif salario[i] >= 1300 or salario[i] < 2300:
+            print(f'Imposto de Renda: {round(salario[i] * 0.10, 2)}')
+        else:
+            print(f'Imposto de Renda: {round(salario[i] * 0.15, 2)}')
+
+        print('|--------------------------------------------|\n')
 
 #9. No dia da estréia do filme "Procurando Dory", uma grande emissora de TV realizou
 #uma pesquisa logo após o encerramento do filme. Cada espectador respondeu
@@ -117,6 +152,51 @@ def q5():
 #• A quantidade de pessoas que responderam regular;
 #• A percentagem de pessoas que responderam bom entre todos os expectadores
 #analisados.
+def q9():
+    opinioes = {
+        'Regular': [],
+        'Bom': [],
+        'Excelente': []
+    }
+
+    for _ in range(3):
+        idade = int_input('Informe sua idade: ')
+
+        while True:
+            print('Qual a sua avaliação para o filme "Procurando Dory" ?')
+            print('3 - EXCELENTE\n2 - BOM\n1 - REGULAR')
+            resposta = int_input('\nDigite o numero da sua avaliação: ')
+            if resposta > 0 and resposta < 4:
+                match resposta:
+                    case 1:
+                        opinioes['Regular'].append(idade)
+                    case 2:
+                        opinioes['Bom'].append(idade)
+                    case _:
+                        opinioes['Excelente'].append(idade)
+                break
+            else:
+                print('(!) REPOSTA INVALIDA (!)')
+
+    try:
+        mediaIdade = sum(opinioes['Excelente'])/len(opinioes['Excelente'])
+    except ZeroDivisionError:
+        mediaIdade = 0
+    except:
+        print(f"(!) - Houve algum erro.")
+
+    try:
+        Espectadores = len(opinioes['Excelente']) + len(opinioes['Regular']) + len(opinioes['Bom'])
+        porcentagemBom = (len(opinioes["Bom"])/Espectadores) * 100
+    except ZeroDivisionError:
+        porcentagemBom = 0
+    except:
+        print(f"(!) - Houve algum erro.")    
+
+    print(f'\nQuantidade de espectadoredes: {Espectadores}')
+    print(f'\nMédia das idades que responderam Excelente: {round(mediaIdade, 0)}')
+    print(f'\nPercentagem de pessoas que responderam bom entre todos os expectadores: {round(porcentagemBom)}')
+    print(f'\nQuantidade de pessoas que responderam regular: {len(opinioes["Regular"])}\n')
 
 #10. Em um campeonato Europeu de Volleyball, se inscreveram 30 países. Sabendo-se
 #que na lista oficial de cada país consta, além de outros dados, peso e idade de 12
@@ -330,17 +410,15 @@ def q5():
 #• amédia das idades das pessoas viúvas;
 #• a porcentagem de pessoas desquitadas ou separadas dentre todas as pessoas
 #analisadas.
-#Obs.: Para encerrar a entrada de dados, digite um número menor que zero para a idade
-questao = int(input('Questão a ser executado'))
-eval(f'q{questao}')
-match questao:
-      case 1:
-        q1()
-      case 2:
-        q2()
-      case 3: 
-        q3()
-      case 4:
-        q4()
-      case 5:
-        q5()    
+#Obs.: Para encerrar a entrada de dados, digite um número menor que zero para a
+#idade.
+
+#q1()
+#q2()
+#q3()
+#q4()
+#q5()
+#q6()
+#q7()
+#q8()
+q9()
