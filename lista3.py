@@ -1,4 +1,4 @@
-from canivete import *
+from Desert import *
 
 #1.Faça um programa que imprima todos os números de 1 até 100.
 def q1():
@@ -201,6 +201,7 @@ def q9():
 #10. Em um campeonato Europeu de Volleyball, se inscreveram 30 países. Sabendo-se
 #que na lista oficial de cada país consta, além de outros dados, peso e idade de 12
 #jogadores, crie um programa que apresente as seguintes informações:
+
 #
 #• O peso médio e a idade média de cada um dos times;
 #• O atleta mais pesado de cada time;
@@ -210,11 +211,41 @@ def q9():
 #11. Construa um programa que leia vários números e informe quantos números
 #entre 100 e 200 foram digitados. Quando o valor 0 (zero) for lido, o algoritmo
 #deverá cessar sua execução.
+def q11():
+    num = 1
+    cont = 0
+    while num != 0:
+        erro = True
+        while erro == True:
+            num = 1.0
+            try:
+                num = round(float(input('Número: ')),2)
+            except ValueError: # só é executado para o tipo de erro ValueError
+                print('O valor informado não é um número inteiro!')
+                erro = True
+            except: # captura qualquer erro
+                print('Ocorreu um erro desconhecido! Tente novamente!')
+                erro = True
+            else:
+                erro = False
+        if num >= 100.0 and num < 200.1:
+            cont += 1
+    print(f'O total de números entre 100 e 200 foi de {cont}')
 
 #12. Dado um país A, com 5 milhões de habitantes e uma taxa de natalidade de 3% ao
 #ano, e um país B com 7 milhões de habitantes e uma taxa de natalidade de 2% ao
 #ano, fazer um programa que calcule e imprima o tempo necessário para que a
 #população do país A ultrapasse a população do país B.
+def q12():
+    ctA = 5000000
+    ctB = 7000000
+    cont = 0
+    while ctA <= ctB:
+        ctA+=(5000000/100)*3
+        ctB+=(7000000/100)*2
+        cont+=1
+    print(f'O tempo necessário foi de {cont} anos')
+    
 
 #13. Uma empresa de fornecimento de energia elétrica faz a leitura mensal dos medidores
 #de consumo. Para cada consumidor, são digitados os seguintes dados:
@@ -232,11 +263,50 @@ def q9():
 
 #14. Faça um programa que leia vários números inteiros e apresente o fatorial de cada
 #número. O algoritmo encerra quando se digita um número menor do que 1.n
+def q14():
+    num = 0
+    while num != 1:
+        factor = 1
+        erro = True
+        while erro == True:
+            num = 1.0
+            try:
+                num = round(int(input('Número: ')),2)
+            except ValueError: # só é executado para o tipo de erro ValueError
+                print('O valor informado não é um número inteiro!')
+                erro = True
+            except: # captura qualquer erro
+                print('Ocorreu um erro desconhecido! Tente novamente!')
+                erro = True
+            else:
+                erro = False
+        for x in range (num, 1, -1):
+            factor *= x
+        print(factor)
 
 #15. Faça um programa que permita entrar com a idade de várias pessoas e
 #imprima:
 #• total de pessoas com menos de 21 anos
 #• total de pessoas com mais de 50 anos
+q15():
+    val = True
+    less = 0
+    more = 0
+    while True:
+        idade = input_int('Digite a sua idade: ')
+        if idade < 21:
+            less += 1
+        elif idade > 50:
+            more += 1
+        else:
+            entrada = input('Deseja continuar inserindo idades? (S/N)')[0].strip().upper()
+            if entrada == 'S':
+                Val = True
+            elif entrada == 'N':
+                Val = False
+            else:
+                print('Entrada inválida!!')
+
 
 #16. Sabendo-se que a unidade lógica e aritmética calcula a divisão por meio de subtrações
 #sucessivas, criar um algoritmo que calcule e imprima o resto da divisão de
@@ -402,6 +472,20 @@ def q9():
 #• o total vendido naquele dia, com todos os códigos juntos;
 #• o total vendido naquele dia em cada um dos códigos.
 #Obs.: Para encerrar a entrada de dados, digite o valor da mercadoria zero.
+def q29():
+    mercadorias = {
+        'L':{'nome':'Limpeza','valores':[]},
+        'A':{'nome':'Alimentação','valores':[]},
+        'H':{'nome':'Higiene','valores':[]}
+    }
+    valor = -1
+    while valor != 0:
+        codigo = input('Digite L (Limpeza), A (Alimentação ou H (Higiene): ')[0]
+        valor = float(input('Valor: R$ '))
+        mercadorias[codigo]['valores'].append(valor)
+    for m in mercadorias.values():
+        print(f'{m["nome"]} = R$ {sum(m["valores"])}')        
+    print(f'Total = R$ {sum(mercadorias["L"]["valores"])+sum(mercadorias["A"]["valores"])+sum(mercadorias["H"]["valores"])}')
 
 #30. Faça um programa que receba a idade e o estado civil (C-casado, S-solteiro, Vviúvo
 #e D-desquitado ou separado) de várias pessoas. Calcule e imprima:
