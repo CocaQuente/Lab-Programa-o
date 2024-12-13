@@ -288,7 +288,7 @@ def q14():
 #imprima:
 #• total de pessoas com menos de 21 anos
 #• total de pessoas com mais de 50 anos
-q15():
+def q15():
     val = True
     less = 0
     more = 0
@@ -496,13 +496,37 @@ def q29():
 #analisadas.
 #Obs.: Para encerrar a entrada de dados, digite um número menor que zero para a
 #idade.
-
-#q1()
-#q2()
-#q3()
-#q4()
-#q5()
-#q6()
-#q7()
-#q8()
-q9()
+while True:
+    questao = int(input('Questão a ser executada: '))
+    match questao:
+        case 1:
+            q1()
+            break
+        case 2:
+            q2()
+            break
+        case 3:
+            q3()
+            break
+        case 4:
+            q4()
+            break
+        case 5:
+            q5()
+            break
+        case 6:
+            q6()
+        case 7:
+            q7()
+            break
+        case 8:
+            q8()
+            break
+        case 9:
+            q9()
+            break
+        case 10:
+            #()
+        #case 11:
+         
+         break
